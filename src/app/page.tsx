@@ -1,9 +1,9 @@
+import {MoviesPage} from "@/containers/moviesPage/MoviesPage";
 
 export default function Home() {
   return (
     <div>
-      <main>
-      </main>
+      <MoviesPage/>
     </div>
   );
 }
