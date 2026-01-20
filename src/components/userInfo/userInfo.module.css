@@ -1,0 +1,11 @@
+.userInfo{
+    display: flex;
+    gap: 10px;
+    margin-right: 15px;
+}
+.userInfo p{
+    width: 37px;
+}
+.userInfo img{
+    cursor: pointer;
+}
