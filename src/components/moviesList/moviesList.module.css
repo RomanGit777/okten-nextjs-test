@@ -1,0 +1,13 @@
+.moviesListContainer{
+    font-family: Montserrat, sans-serif;
+    color: #FFFFFF;
+    margin-left: 25px;
+}
+.title{
+    margin-top: 45px;
+}
+.slider{
+    display: flex;
+    gap: 12px;
+    margin-top: 15px;
+}

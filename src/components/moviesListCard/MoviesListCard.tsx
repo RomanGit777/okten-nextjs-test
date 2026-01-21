@@ -1,24 +1,10 @@
-import style from './moviesListCard.module.css'
-export const MoviesListCard = () => {
-    return (
-        <div className={style.moviesListCardContainer}>
-            <div className={style.Tv}>
-                <h1>Popular TV shows</h1>
-                <div className={style.slider}>
-                    <div className={style.card}></div>
-                    <div className={style.card}></div>
-                    <div className={style.card}></div>
-                </div>
-            </div>
+// import style from './moviesListCard.module.css'
+import {IPopularTv} from "@/models/IPopularTv";
+import {MovieInfo} from "@/components/movieInfo/MovieInfo";
 
-            <div  className={style.Movies}>
-                <h1>Popular Movies</h1>
-                <div className={style.slider}>
-                    <div className={style.card}></div>
-                    <div className={style.card}></div>
-                    <div className={style.card}></div>
-                </div>
-            </div>
-        </div>
-    );
+interface MoviesListCardProps {
+    tv: IPopularTv;
+}
+export const MoviesListCard = ({tv}: MoviesListCardProps) => {
+    return <div><MovieInfo tv={tv}/></div>
 };
