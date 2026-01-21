@@ -2,6 +2,7 @@
     font-family: Montserrat, sans-serif;
     color: #FFFFFF;
     margin-left: 25px;
+    position: relative;
 }
 .title{
     margin-top: 45px;
@@ -10,4 +11,28 @@
     display: flex;
     gap: 12px;
     margin-top: 15px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 10px;
+}
+.rightArrow, .leftArrow{
+    width: 70px;
+    height: 110px;
+    background-color: #7D7C7C;
+    opacity: 70%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+.rightArrow{
+    right: 0;
+}
+.leftArrow{
+    left: 0;
 }
