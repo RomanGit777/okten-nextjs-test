@@ -1,5 +1,6 @@
 'use client';
 import {useRef, useState} from "react";
+import style from './sliderWrapper.module.css';
 
 interface SliderWrapperProps {
     children: React.ReactNode;
@@ -21,7 +22,7 @@ export const SliderWrapper = ({Arrows, children}: SliderWrapperProps) => {
         const slider = sliderRef.current;
         if (!slider) return;
 
-        slider.scrollBy({left: 300, behavior: "smooth"});
+        slider.scrollBy({left: 1100, behavior: "smooth"});
         setCanGoBack(true);
     }
 
@@ -29,8 +30,8 @@ export const SliderWrapper = ({Arrows, children}: SliderWrapperProps) => {
         const slider = sliderRef.current;
         if (!slider) return;
 
-        slider.scrollBy({left: -300, behavior: "smooth"});
-        if (slider.scrollLeft - 300 <= 0) {
+        slider.scrollBy({left: -1100, behavior: "smooth"});
+        if (slider.scrollLeft - 1100 <= 0) {
             setCanGoBack(false);
         }
     }
@@ -42,7 +43,7 @@ export const SliderWrapper = ({Arrows, children}: SliderWrapperProps) => {
             {show && ( <Arrows
                 scrollRight={scrollRight}
                 scrollLeft={scrollLeft} canGoBack={canGoBack} /> )}
-            <div ref={sliderRef}>
+            <div ref={sliderRef} className={style.slider}>
                 {children}
             </div>
         </div>
