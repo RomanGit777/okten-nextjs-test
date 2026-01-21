@@ -11,3 +11,15 @@
     object-fit: cover;
     display: block;
 }
+@media screen and (max-width: 1100px) {
+    .movieInfoCard{
+        width: 150px;
+        height: 250px;
+    }
+}
+@media screen and (max-width: 500px) {
+    .movieInfoCard{
+        width: 100px;
+        height: 200px;
+    }
+}
