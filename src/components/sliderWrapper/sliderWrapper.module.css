@@ -6,3 +6,6 @@
     scroll-behavior: smooth;
     padding-bottom: 10px;
 }
+.slider::-webkit-scrollbar{
+    display: none;
+}

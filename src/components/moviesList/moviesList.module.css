@@ -3,6 +3,8 @@
     color: #FFFFFF;
     margin-left: 25px;
     position: relative;
+    overflow-x: hidden;
+
 }
 .title{
     margin-top: 45px;

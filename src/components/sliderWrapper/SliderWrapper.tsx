@@ -42,7 +42,8 @@ export const SliderWrapper = ({Arrows, children}: SliderWrapperProps) => {
         onMouseLeave={() => setShow(false)}>
             {show && ( <Arrows
                 scrollRight={scrollRight}
-                scrollLeft={scrollLeft} canGoBack={canGoBack} /> )}
+                scrollLeft={scrollLeft}
+                canGoBack={canGoBack} /> )}
             <div ref={sliderRef} className={style.slider}>
                 {children}
             </div>
