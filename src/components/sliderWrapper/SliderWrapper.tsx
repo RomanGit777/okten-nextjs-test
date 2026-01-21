@@ -40,7 +40,7 @@ export const SliderWrapper = ({Arrows, children}: SliderWrapperProps) => {
         const slider = sliderRef.current;
         if (!slider) return;
 
-        const step = 1100;
+        const step = slider.clientWidth;
         const maxScroll = slider.scrollWidth - slider.clientWidth;
 
         const nextScrollLeft =
