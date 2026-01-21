@@ -10,7 +10,7 @@ export const MoviesList = ({tv}: MoviesListProps) => {
     return (
         <div className={style.moviesListContainer}>
             <h1 className={style.title}>Popular Tv Shows</h1>
-            <SliderWrapper arrows={<SliderArrows/>}>
+            <SliderWrapper Arrows={SliderArrows}>
                 <div className={style.slider}>
                     {tv.map(tv => <MoviesListCard tv={tv} key={tv.id}/>)}
                 </div>
