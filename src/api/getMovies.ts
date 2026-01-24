@@ -7,6 +7,6 @@ export const getPopularTv = async (time_window: "day" | "week"): Promise<IPopula
     return result.data
 }
 export const getPopularTvById = async (id: string): Promise<IPopularTv> => {
-    const {data} = await axios.get(`https://api.themoviedb.org/3/trending/tv/${id}?api_key=${process.env.API_KEY}`)
+    const {data} = await axios.get(`https://api.themoviedb.org/3/tv/${id}?api_key=${process.env.API_KEY}`)
     return data
 }
