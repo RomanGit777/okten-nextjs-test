@@ -9,7 +9,7 @@ interface movieInfoProps {
 export const MovieInfo = ({tv, shortOverview}: movieInfoProps) => {
 
     return (
-        <div className={style.card}>
+        <div className={style.card} role={"button"}>
             <PosterPreview title={tv.name} posterPath={tv.poster_path} className={style.cardImg}/>
 
             <div className={style.text}>
