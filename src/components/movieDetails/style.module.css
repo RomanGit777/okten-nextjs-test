@@ -36,3 +36,80 @@
     height: 30px;
     border-radius: 5px;
 }
+
+@media screen and (max-width: 1000px) {
+    .text{
+        margin-top: 5px;
+    }
+}
+@media screen and (max-width: 900px) {
+     .wrapper{
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         margin-left: 0;
+         gap: 20px;
+     }
+    .cardImg{
+        width: 70%;
+        height: 70%;
+    }
+    .text{
+        align-items: center;
+    }
+    .downPart{
+        display: flex;
+        justify-content: flex-start;
+        padding-bottom: 45px;
+    }
+}
+@media screen and (max-width: 720px) {
+    .title{
+        font-size: 32px;
+    }
+    .desc{
+        font-size: 18px;
+    }
+    .downPart{
+        font-size: 16px;
+    }
+}
+@media screen and (max-width: 550px) {
+    .title{
+        font-size: 24px;
+    }
+    .desc{
+        font-size: 16px;
+    }
+    .downPart{
+        font-size: 14px;
+    }
+}
+@media screen and (max-width: 410px) {
+    .title{
+        font-size: 20px;
+    }
+    .desc{
+        font-size: 16px;
+    }
+    .downPart{
+        font-size: 14px;
+    }
+}
+@media screen and (max-width: 350px) {
+    .title{
+        display: grid;
+        flex-direction: column;
+        font-size: 20px;
+    }
+    .desc{
+        font-size: 16px;
+    }
+    .downPart{
+        font-size: 14px;
+    }
+    .text{
+        margin-left: 15px;
+    }
+}
