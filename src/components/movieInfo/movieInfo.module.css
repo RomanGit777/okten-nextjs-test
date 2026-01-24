@@ -86,10 +86,20 @@
     margin-top: 0.2em;
     margin-bottom: 0;
 }
+.downPart{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-top: 10px;
+}
 .rating{
     width: 25px;
     display: flex;
     justify-content: center;
+}
+.genres{
+    font-size: 12px;
 }
 
 
