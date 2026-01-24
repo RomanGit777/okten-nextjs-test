@@ -6,5 +6,6 @@ interface MoviesListCardProps {
     tv: IPopularTv;
 }
 export const MoviesListCard = ({tv}: MoviesListCardProps) => {
-    return <div><MovieInfo tv={tv}/></div>
+const shortOverview = tv.overview ? tv.overview.slice(0,50) + "..." : "";
+    return <div><MovieInfo tv={tv} shortOverview={shortOverview}/></div>
 };
