@@ -94,9 +94,12 @@
     margin-top: 10px;
 }
 .rating{
-    width: 25px;
     display: flex;
+    align-items: center;
     justify-content: center;
+    width: 28px;
+    height: 25px;
+    border-radius: 5px;
 }
 .genres{
     font-size: 12px;

@@ -24,6 +24,7 @@ export const MovieDetails = async ({id}:MovieDetailsProps) => {
                         {tv.vote_average.toFixed(1)}
                     </p>
                     <p className={style.genres}>{tv.genres.map(g => GENRE_MAP[g.id]).join(", ")}</p>
+                    <p></p>
                 </div>
             </div>
         </div>
