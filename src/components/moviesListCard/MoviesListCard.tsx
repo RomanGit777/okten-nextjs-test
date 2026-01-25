@@ -5,7 +5,7 @@ import {MovieInfo} from "@/components/movieInfo/MovieInfo";
 interface MoviesListCardProps {
     tv: IPopularTv;
 }
-export const MoviesListCard = ({tv}: MoviesListCardProps) => {
+export const MoviesListCardTv = ({tv}: MoviesListCardProps) => {
 const shortOverview = tv.overview ? tv.overview.slice(0,50) + "..." : "";
     return <div><MovieInfo tv={tv} shortOverview={shortOverview}/></div>
 };
