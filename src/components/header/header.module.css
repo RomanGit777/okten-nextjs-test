@@ -16,6 +16,9 @@
     display: flex;
     gap: 30px;
 }
+.homeBtn{
+    cursor: pointer;
+}
 @media screen and (max-width: 396px){
     .header nav{
         display: flex;
