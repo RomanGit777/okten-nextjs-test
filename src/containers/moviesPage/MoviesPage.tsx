@@ -2,9 +2,9 @@ import {MoviesList} from "@/components/moviesList/MoviesListCardTv/MoviesList";
 import {getPopularTv} from "@/api/getMovies";
 
 export const MoviesPage = async () => {
-    const {tv} = await getPopularTv("week");
+    const {results} = await getPopularTv("week");
 
     return (
-        <MoviesList tv={tv}/>
+        <MoviesList tv={results}/>
     );
 };
