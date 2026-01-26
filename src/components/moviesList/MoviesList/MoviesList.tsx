@@ -10,7 +10,7 @@ interface MoviesListProps {
 export const MoviesList = ({movies} : MoviesListProps) => {
     return (
         <div className={style.moviesListContainer}>
-            <div className={'tvShows'}>
+            <div className={'moviesShows'}>
                 <h1 className={style.title}>Popular Movies</h1>
                     <SliderWrapper Arrows={SliderArrows}>
                         {movies.map(movie => <MoviesListCard movie={movie} key={movie.id}/>)}
