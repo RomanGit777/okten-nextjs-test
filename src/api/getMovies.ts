@@ -18,6 +18,6 @@ export const getPopularMovies = async (time_window: "day" | "week"): Promise<IPo
     return data
 }
 export const getPopularMoviesById = async (id: string): Promise<IMovieDetails> => {
-    const {data} = await axios.get(`https://api.themoviedb.org/3/movie/${id}`)
+    const {data} = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.API_KEY}`)
     return data;
 }

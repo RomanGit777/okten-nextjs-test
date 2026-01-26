@@ -7,7 +7,6 @@ export const MoviesPage = async () => {
         getPopularTv("day"),
         getPopularMovies("day"),
     ]);
-
     return (
         <>
             <TvMoviesList tv={tv}/>

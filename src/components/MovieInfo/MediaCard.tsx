@@ -10,14 +10,15 @@ type Media = IPopularTv | IPopularMovies;
 interface MediaCardProps {
     item: Media;
     shortOverview: string;
+    type: "tv" | "movie";
 }
 
-export const MediaCard = ({item, shortOverview} : MediaCardProps) => {
+export const MediaCard = ({item, shortOverview, type} : MediaCardProps) => {
 
     const title = "name" in item ? item.name : item.title;
 
     return (
-        <Link href={'/details/' + item.id.toString()}>
+        <Link href={`/${type}/` + item.id.toString()}>
             <div className={style.card} role={"button"}>
                 <PosterPreview title={title} posterPath={item.poster_path} className={style.cardImg}/>
 

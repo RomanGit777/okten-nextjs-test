@@ -7,5 +7,5 @@ interface MoviesListCardTvProps {
 }
 export const MoviesListCardTv = ({tv}: MoviesListCardTvProps) => {
 const shortOverview = tv.overview ? tv.overview.slice(0,50) + "..." : "";
-    return <MediaCard item={tv} shortOverview={shortOverview}/>;
+    return <MediaCard item={tv} shortOverview={shortOverview} type={"tv"}/>;
 };

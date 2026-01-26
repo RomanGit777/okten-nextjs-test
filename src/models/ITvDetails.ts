@@ -23,7 +23,7 @@ export interface ITvDetails {
     original_name: string;
     overview: string;
     popularity: number;
-    poster_path: string | null;
+    poster_path: string;
     production_companies: ProductionCompany[];
     production_countries: ProductionCountry[];
     seasons: Season[];

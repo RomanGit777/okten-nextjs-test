@@ -14,5 +14,17 @@ export const GENRE_MAP: Record<number, string> = {
     10766: 'Soap',
     10767: 'Talk',
     10768: 'War & Politics',
-    37: 'Western'
+    37: 'Western',
+    28: 'Action',
+    12: 'Adventure',
+    14: 'Fantasy',
+    36: 'History',
+    27: 'Horror',
+    10402: 'Music',
+    10749: 'Romance',
+    878: 'Science Fiction',
+    10770: 'TV Movie',
+    53: 'Thriller',
+    10752: 'War',
 }
+
