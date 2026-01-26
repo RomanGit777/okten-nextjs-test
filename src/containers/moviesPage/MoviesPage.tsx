@@ -5,7 +5,6 @@ import {MoviesList} from "@/components/moviesList/MoviesList/MoviesList";
 export const MoviesPage = async () => {
     const {results: tv} = await getPopularTv("week");
     const {results: movies} = await getPopularMovies("week");
-    console.log(movies);
 
     return (
         <>
