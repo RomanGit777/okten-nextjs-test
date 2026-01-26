@@ -1,12 +1,12 @@
-import {MoviesListCardTv} from "@/components/moviesListCard/MoviesListCard";
 import {IPopularTv} from "@/models/IPopularTv";
 import style from './moviesList.module.css'
 import {SliderArrows} from "@/components/sliderArrows/SliderArrows";
 import {SliderWrapper} from "@/components/sliderWrapper/SliderWrapper";
-interface MoviesListTvProps{
+import {MoviesListCardTv} from "@/components/moviesListCard/TvMoviesListCard/MoviesListCardTv";
+interface TvMoviesListTvProps{
     tv: IPopularTv[];
 }
-export const MoviesList = ({tv}: MoviesListTvProps) => {
+export const TvMoviesList = ({tv}: TvMoviesListTvProps) => {
     return (
         <div className={style.moviesListContainer}>
             <div className={'tvShows'}>

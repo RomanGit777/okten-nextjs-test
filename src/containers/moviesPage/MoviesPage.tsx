@@ -1,10 +1,16 @@
-import {MoviesList} from "@/components/moviesList/MoviesListCardTv/MoviesList";
-import {getPopularTv} from "@/api/getMovies";
+import {getPopularMovies, getPopularTv} from "@/api/getMovies";
+import {TvMoviesList} from "@/components/moviesList/MoviesListTv/TvMoviesList";
+import {MoviesList} from "@/components/moviesList/MoviesList/MoviesList";
 
 export const MoviesPage = async () => {
-    const {results} = await getPopularTv("week");
+    const {results: tv} = await getPopularTv("week");
+    const {results: movies} = await getPopularMovies("week");
+    console.log(movies);
 
     return (
-        <MoviesList tv={results}/>
+        <>
+            <TvMoviesList tv={tv}/>
+            <MoviesList movies={movies}/>
+        </>
     );
 };

@@ -3,11 +3,11 @@ import {PosterPreview} from "@/components/posterPreview/PosterPreview";
 import {IPopularTv} from "@/models/IPopularTv";
 import {GENRE_MAP} from "@/constants/genres";
 import Link from "next/link";
-interface movieInfoProps {
+interface TvMovieInfoProps {
     tv: IPopularTv;
     shortOverview: string;
 }
-export const MovieInfo = ({tv, shortOverview}: movieInfoProps) => {
+export const TvMovieInfo = ({tv, shortOverview}: TvMovieInfoProps) => {
 
     return (
         <Link href={'/details/' + tv.id.toString()}>
