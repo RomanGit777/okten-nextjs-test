@@ -3,13 +3,12 @@
     color: #efeded;
     font-size: 16px;
 }
-.topWrapper {
-    margin-bottom: 200px; /* pushes genres section down */
-}
 
 .allGenres {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    font-size: 18px;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 25px;
 }
 

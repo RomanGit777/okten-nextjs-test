@@ -7,16 +7,24 @@ export const GenresSection = () => {
     const [isOpen, setIsOpen] = useState(false);
     const listRef = useRef<HTMLUListElement | null>(null);
 
-    const btnHandler = () => {
-        setIsOpen(true);
-        listRef.current?.scrollIntoView({behavior: "smooth"});
-    }
+    useEffect(() => {
+        const handleHash = () => {
+            if (window.location.hash === "#genres") {
+                setIsOpen(true);
+                setTimeout(() => {
+                    listRef.current?.scrollIntoView({ behavior: "smooth" });
+                }, 50);
+            }
+        };
+        handleHash();
+
+        window.addEventListener("hashchange", handleHash);
+        return () => window.removeEventListener("hashchange", handleHash);
+    }, []);
+
 
     return (
-        <div className={style.wrapper}>
-            <div>
-                <button onClick={btnHandler} className={style.btn}>Genres</button>
-            </div>
+        <div id={"#genres"} className={style.wrapper}>
 
             <div className={style.allGenres}>
                 {isOpen &&

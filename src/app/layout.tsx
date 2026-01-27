@@ -23,9 +23,7 @@ export default function RootLayout({
       <body>
       <Header/>
         {children}
-      <div id={"genres"}>
           <GenresSection/>
-      </div>
       </body>
     </html>
   );
