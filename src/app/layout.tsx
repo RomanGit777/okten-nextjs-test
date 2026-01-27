@@ -3,6 +3,7 @@ import "./globals.css";
 import "../styles/reset.css"
 import {Montserrat} from 'next/font/google'
 import {Header} from "@/components/header/Header";
+import {GenresSection} from "@/components/genresSection/GenresSection";
 
 const montserrat = Montserrat({
     subsets: ['latin']
@@ -22,6 +23,9 @@ export default function RootLayout({
       <body>
       <Header/>
         {children}
+      <div id={"genres"}>
+          <GenresSection/>
+      </div>
       </body>
     </html>
   );

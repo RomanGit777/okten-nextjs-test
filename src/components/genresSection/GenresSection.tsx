@@ -1,11 +1,11 @@
 'use client';
 import style from './style.module.css'
-import {useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {GENRE_MAP} from "@/constants/genres";
 
 export const GenresSection = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const listRef = useRef<HTMLDivElement | null>(null);
+    const listRef = useRef<HTMLUListElement | null>(null);
 
     const btnHandler = () => {
         setIsOpen(true);
@@ -14,13 +14,13 @@ export const GenresSection = () => {
 
     return (
         <div className={style.wrapper}>
-            <div className={style.topWrapper}>
+            <div>
                 <button onClick={btnHandler} className={style.btn}>Genres</button>
             </div>
 
-            <div className={style.genresSection} ref={listRef}>
+            <div className={style.allGenres}>
                 {isOpen &&
-                    <ul className={style.allGenres}>
+                    <ul className={style.allGenres} ref={listRef}>
                         {Object.entries(GENRE_MAP).map(([id, name]) => <li key={id}>{name}</li>)}
                     </ul>
                 }
