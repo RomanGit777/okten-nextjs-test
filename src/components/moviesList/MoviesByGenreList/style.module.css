@@ -2,6 +2,27 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     justify-items: center;
-    gap: 25px;
-    margin: 30px;
+    row-gap: 55px;
+    column-gap: 20px;
+    margin: 15px;
 }
+/*@media screen and (max-width: 1625px) {*/
+/*    .gridContainer{*/
+/*        gap: 15px;*/
+/*    }*/
+/*}*/
+/*@media screen and (max-width: 1585px) {*/
+/*    .gridContainer{*/
+/*        gap: 15px;*/
+/*    }*/
+/*}*/
+/*@media screen and (max-width: 1254px) {*/
+/*    .gridContainer{*/
+/*        gap: 15px;*/
+/*    }*/
+/*}*/
+/*@media screen and (max-width: 1224px) {*/
+/*    .gridContainer{*/
+/*        gap: 14px;*/
+/*    }*/
+/*}*/
