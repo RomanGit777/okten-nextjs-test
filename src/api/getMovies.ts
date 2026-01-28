@@ -25,7 +25,7 @@ export const getPopularMoviesById = async (id: string): Promise<IMovieDetails> =
     const {data} = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.API_KEY}`)
     return data;
 }
-export const getMoviesByGenre = async (genreId: string): Promise<IPopularBaseTv> => {
+export const getMoviesByGenre = async (genreId: string): Promise<IPopularBaseMovies> => {
     const {data} = await axios.get(`https://api.themoviedb.org/3/discover/movie??with_genres=${genreId}&api_key=${process.env.API_KEY}`)
     return data;
 }
