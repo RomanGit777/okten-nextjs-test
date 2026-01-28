@@ -7,7 +7,7 @@ interface MoviesByGenreListProps {
 export const MoviesByGenreList = ({movies} : MoviesByGenreListProps) => {
     return (
         <>
-            {movies.map(movie => <MovieByGenreListCard key={movie.id}/>)}
+            {movies.map(movie => <MovieByGenreListCard key={movie.id} movies={movie}/>)}
         </>
     );
 };

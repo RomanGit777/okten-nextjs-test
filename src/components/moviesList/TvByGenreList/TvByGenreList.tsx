@@ -7,7 +7,7 @@ interface TvByGenreListProps {
 export const TvByGenreList = ({tv} : TvByGenreListProps) => {
     return (
         <div>
-            {tv.map(tv => <TvByGenreListCard key={tv.id}/>)}
+            {tv.map(tv => <TvByGenreListCard key={tv.id} tv={tv}/>)}
         </div>
     );
 };

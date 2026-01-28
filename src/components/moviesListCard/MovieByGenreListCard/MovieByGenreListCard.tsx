@@ -1,9 +1,9 @@
-import {IPopularTv} from "@/models/IPopularTv";
+import {IPopularMovies} from "@/models/IPopularMovies";
 
-interface TvListCardProps {
-    tv: IPopularTv;
+interface MovieListCardProps {
+    movies: IPopularMovies;
 }
-export const MovieByGenreListCard = ({tv} : TvListCardProps) => {
+export const MovieByGenreListCard = ({movies} : MovieListCardProps) => {
     return (
         <></>
     );
