@@ -1,6 +1,6 @@
 // import style from './moviesListCard.module.css'
 import {IPopularTv} from "@/models/IPopularTv";
-import {MediaCard} from "@/components/MovieInfo/MediaCard";
+import {MediaCard} from "@/components/MovieInfo/MediaCard/MediaCard";
 
 interface MoviesListCardTvProps {
     tv: IPopularTv;

@@ -1,5 +1,5 @@
 import {IPopularMovies} from "@/models/IPopularMovies";
-import {MediaCard} from "@/components/MovieInfo/MediaCard";
+import {MediaCard} from "@/components/MovieInfo/MediaCard/MediaCard";
 
 interface MoviesListCardProps {
     movie: IPopularMovies;
