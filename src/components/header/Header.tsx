@@ -8,7 +8,7 @@ export const Header = () => {
             <h1>Logo</h1>
             <nav>
                 <Link href={'/'} className={"homeBtn"}>Home</Link>
-                <Link href={"#genres"}>Genres</Link>
+                <Link href={'/genres/'}>Genres</Link>
                 <SearchBar/>
             </nav>
             <UserInfo/>

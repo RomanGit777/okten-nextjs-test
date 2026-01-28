@@ -1,14 +1,10 @@
-.btn{
-    font-family: Montserrat, sans-serif;
-    color: #efeded;
-    font-size: 16px;
-}
-
 .allGenres {
+    margin: 35px 15px;
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    font-size: 18px;
+    grid-template-columns: repeat(9, 1fr);
+    font-size: 20px;
+    font-weight: 500;
     flex-wrap: wrap;
-    gap: 25px;
+    gap: 35px;
 }
 
