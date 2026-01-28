@@ -3,10 +3,9 @@ import {MoviesByGenreList} from "@/components/moviesList/MoviesByGenreList/Movie
 import {TvByGenreList} from "@/components/moviesList/TvByGenreList/TvByGenreList";
 
 interface MoviesByGenrePageProps {
-    params: Promise<{id : string}>
+    id : string;
 }
-export const MoviesByGenrePage = async ({params} : MoviesByGenrePageProps) => {
-    const {id} = await params;
+export const MoviesByGenrePage = async ({id} : MoviesByGenrePageProps) => {
     const [{results: movies},{results: tv}] = await Promise.all([
         getMoviesByGenre(id),
         getTvByGenre(id)

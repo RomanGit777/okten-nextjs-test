@@ -12,6 +12,6 @@ interface MediaCardByGenreProps {
 
 export const MediaCardByGenre = ({item, shortOverview, type}: MediaCardByGenreProps) => {
     return (
-        <></>
+        <div>F</div>
     );
 };
