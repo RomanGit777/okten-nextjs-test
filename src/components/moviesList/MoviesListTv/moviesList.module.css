@@ -1,8 +1,8 @@
 .moviesListContainer{
-    margin-left: 25px;
-    margin-right: 25px;
+    margin: 55px 25px 25px 25px;
     position: relative;
     overflow-x: hidden;
+
 }
 .title{
     margin-top: 45px;
