@@ -8,6 +8,8 @@
     border-bottom: 1px solid #4e4e4e;
     font-family: Montserrat, serif;
     align-items: center;
+    /*position: fixed;*/
+    /*z-index: 1;*/
 }
 .header h1{
     margin-left: 15px;

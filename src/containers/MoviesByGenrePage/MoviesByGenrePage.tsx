@@ -11,9 +11,9 @@ export const MoviesByGenrePage = async ({id} : MoviesByGenrePageProps) => {
         getTvByGenre(id)
     ])
     return (
-        <>
-            <MoviesByGenreList movies={movies}/>
-            <TvByGenreList tv={tv}/>
-        </>
+        <div style={{paddingBottom: "20px"}}>
+            {movies.length > 0 && <MoviesByGenreList movies={movies}/>}
+            {tv.length > 0 && <TvByGenreList tv={tv}/>}
+        </div>
     );
 };
