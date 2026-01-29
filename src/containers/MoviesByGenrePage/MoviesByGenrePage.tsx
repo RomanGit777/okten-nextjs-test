@@ -1,6 +1,7 @@
 import {getMoviesByGenre, getTvByGenre} from "@/api/getMovies";
 import {MoviesByGenreList} from "@/components/moviesList/MoviesByGenreList/MoviesByGenreList";
 import {TvByGenreList} from "@/components/moviesList/TvByGenreList/TvByGenreList";
+import {PaginationComponent} from "@/components/pagination/PaginationComponent";
 
 interface MoviesByGenrePageProps {
     id : string;
@@ -14,6 +15,7 @@ export const MoviesByGenrePage = async ({id} : MoviesByGenrePageProps) => {
         <div style={{paddingBottom: "20px", paddingTop: "60px"}}>
             {movies.length > 0 && <MoviesByGenreList movies={movies}/>}
             {tv.length > 0 && <TvByGenreList tv={tv}/>}
+            <PaginationComponent/>
         </div>
     );
 };
