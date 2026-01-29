@@ -1,11 +1,11 @@
 import {MoviesByGenrePage} from "@/containers/MoviesByGenrePage/MoviesByGenrePage";
 interface genresIdPageProps {
-    params: {id : string};
-    searchParams : { page? : string };
+    params: Promise<{ id: string }>;
+    searchParams: Promise<{ page?: string }>;
 }
 const GenresIdPage = async ({params, searchParams} : genresIdPageProps) => {
-    const id =  params.id;
-    const page = searchParams.page || "1";
-    return <MoviesByGenrePage id={id} page={page}/>;
+    const {id} =  await params;
+    const {page} = await searchParams;
+    return <MoviesByGenrePage id={id} page={page || "1"}/>;
 };
 export default GenresIdPage;

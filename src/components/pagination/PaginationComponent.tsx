@@ -14,7 +14,7 @@ export const PaginationComponent = ({currentPage,totalPages} : PaginationCompone
         if (page < 1 || page > totalPages) return;
         const params = new URLSearchParams(searchParams.toString());
         params.set("page", String(page));
-        router.push(`${params.toString()}`);
+        router.push(`?${params.toString()}`);
     }
     return (
         <div className={style.pagination}>

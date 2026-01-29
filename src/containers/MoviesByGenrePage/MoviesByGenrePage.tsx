@@ -10,12 +10,12 @@ interface MoviesByGenrePageProps {
 export const MoviesByGenrePage = async ({id, page} : MoviesByGenrePageProps) => {
     const currentPage = Number(page || 1);
 
-    const [{results: movies, total_pages: moviesPages},{results: tv, total_pages: tvPages}] = await Promise.all([
+    const [{results: movies},{results: tv}] = await Promise.all([
         getMoviesByGenre(id, String(page)),
         getTvByGenre(id, String(page))
     ]);
 
-    const totalPages = Math.max(moviesPages, tvPages);
+    const totalPages = 5;
 
     return (
         <div style={{paddingBottom: "20px", paddingTop: "60px"}}>
