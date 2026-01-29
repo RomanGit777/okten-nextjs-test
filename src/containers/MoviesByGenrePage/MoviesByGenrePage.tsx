@@ -5,17 +5,25 @@ import {PaginationComponent} from "@/components/pagination/PaginationComponent";
 
 interface MoviesByGenrePageProps {
     id : string;
+    page : string ;
 }
-export const MoviesByGenrePage = async ({id} : MoviesByGenrePageProps) => {
-    const [{results: movies},{results: tv}] = await Promise.all([
-        getMoviesByGenre(id),
-        getTvByGenre(id)
-    ])
+export const MoviesByGenrePage = async ({id, page} : MoviesByGenrePageProps) => {
+    const currentPage = Number(page || 1);
+
+    const [{results: movies, total_pages: moviesPages},{results: tv, total_pages: tvPages}] = await Promise.all([
+        getMoviesByGenre(id, String(page)),
+        getTvByGenre(id, String(page))
+    ]);
+
+    const totalPages = Math.max(moviesPages, tvPages);
+
     return (
         <div style={{paddingBottom: "20px", paddingTop: "60px"}}>
             {movies.length > 0 && <MoviesByGenreList movies={movies}/>}
             {tv.length > 0 && <TvByGenreList tv={tv}/>}
-            <PaginationComponent/>
+            <PaginationComponent
+                totalPages={totalPages}
+                currentPage={currentPage}/>
         </div>
     );
 };
