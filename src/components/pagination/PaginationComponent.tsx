@@ -2,13 +2,23 @@
 import style from "./style.module.css"
 import {useSearchParams} from "next/navigation";
 import {useRouter} from "next/navigation";
+import {getPageWindow} from "@/helpers/getPageWindow";
+import React from "react";
+import {PageButton} from "@/components/pagination/PageButton";
 interface PaginationComponentProps {
     currentPage: number;
     totalPages: number;
+    maxVisible: number;
 }
-export const PaginationComponent = ({currentPage,totalPages} : PaginationComponentProps) => {
+export const PaginationComponent = ({currentPage,totalPages, maxVisible = 5} : PaginationComponentProps) => {
     const searchParams = useSearchParams();
     const router = useRouter();
+
+    const {start, end, pages} = React.useMemo(
+        () => getPageWindow(currentPage, totalPages, maxVisible),
+        [currentPage, totalPages, maxVisible]);
+
+    if (!totalPages || totalPages <= 1) return null;
 
     const goToPage = (page: number) => {
         if (page < 1 || page > totalPages) return;
@@ -16,82 +26,25 @@ export const PaginationComponent = ({currentPage,totalPages} : PaginationCompone
         params.set("page", String(page));
         router.push(`?${params.toString()}`);
     }
-
-    const maxVisibile = 5;
-    let start = Math.max(1, currentPage - 2)
-    let end = Math.min(totalPages, start + maxVisibile - 1);
-
-    if (end - start < maxVisibile - 1) {
-        start = Math.max(1, end - maxVisibile + 1);
-    }
-
-    const pages: number[] = [];
-    for (let i = start; i <= end; i++) {
-        pages.push(i);
-    }
+    const goPrev = () => goToPage(currentPage - 1);
+    const goNext = () => goToPage(currentPage + 1);
 
     return (
         <div className={style.pagination}>
-
-            {start > 1 && (
-                <button
-                    type={"button"}
-                    onClick={() => goToPage(currentPage - 1)}
-                    className={style.pageButton}>
-                    Prev
-                </button>
-            )}
-            {start > 1 && (
-                <button
-                    type={"button"}
-                    onClick={() => goToPage(1)}
-                    className={style.pageButton}>
-                            1
-                </button>
-            )
-            }
-            {start > 1 && (
-                <button
-                    type={"button"}
-                    onClick={() => goToPage(1)}
-                    className={style.pageButton}>
-                    ...
-                </button>
-            )}
-            {pages.map((p) => (
-                <button
-                type={"button"}
-                key={p}
-                onClick={() => goToPage(p)}
-                className={p === currentPage ? style.pageButtonActive : style.pageButton}
-                >
-                    {p}
-                </button>
-            ) )  }
-            {end < totalPages && (
-                <button
-                    type={"button"}
-                    onClick={() => goToPage(totalPages)}
-                    className={style.pageButton}>
-                        ...
-                </button>
-            )}
-            {end < totalPages && (
-                <button
-                    type={"button"}
-                    onClick={() => goToPage(totalPages)}
-                    className={style.pageButton}>
-                    {totalPages}
-                </button>
-            )}
-            {currentPage < totalPages && (
-                <button
-                    type={"button"}
-                    onClick={() => goToPage(currentPage + 1)}
-                    className={style.pageButton}>
-                    Next
-                </button>
-            )}
+            {/* Prev */}
+            {currentPage > 1 && (<PageButton onClick={goPrev}>Prev</PageButton>)}
+            {/* First page */}
+            {start > 1 && (<PageButton onClick={() => goToPage(1)}>1</PageButton>)}
+            {/* Leading ellipsis */}
+            {start > 2 && (<PageButton onClick={() => goToPage(start - 1)}>...</PageButton>)}
+            {/* Window pages */}
+            {pages.map((p) => (<PageButton disabled={p === currentPage} active={p === currentPage} onClick={() => goToPage(p)} key={p}>{p}</PageButton>) )  }
+            {/* Trailing ellipsis */}
+            {end < totalPages - 1 && (<PageButton onClick={() => goToPage(end + 1)}>...</PageButton>)}
+            {/* Last page */}
+            {end < totalPages && (<PageButton onClick={() => goToPage(totalPages)}>{totalPages}</PageButton>)}
+            {/* Next */}
+            {currentPage < totalPages && (<PageButton onClick={goNext}>Next</PageButton>)}
         </div>
     );
 };

@@ -9,7 +9,6 @@ interface MoviesBySearchProps {
 export const MoviesBySearch = async ({query, page} : MoviesBySearchProps) => {
     const currentPage = Number(page || 1);
 
-    // const totalPages = 5;
 
     const {results: movies, total_pages} = await getMoviesBySearch(query, String(page));
     return (
@@ -17,7 +16,9 @@ export const MoviesBySearch = async ({query, page} : MoviesBySearchProps) => {
             <MoviesBySearchList movies={movies}/>
             <PaginationComponent
                 totalPages={total_pages}
-                currentPage={currentPage}/>
+                currentPage={currentPage}
+                maxVisible={5}
+            />
         </div>
     );
 };
