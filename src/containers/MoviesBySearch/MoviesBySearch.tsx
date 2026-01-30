@@ -9,14 +9,14 @@ interface MoviesBySearchProps {
 export const MoviesBySearch = async ({query, page} : MoviesBySearchProps) => {
     const currentPage = Number(page || 1);
 
-    const totalPages = 5;
+    // const totalPages = 5;
 
-    const {results: movies} = await getMoviesBySearch(query, String(page));
+    const {results: movies, total_pages} = await getMoviesBySearch(query, String(page));
     return (
         <div style={{paddingBottom: "20px", paddingTop: "60px"}}>
             <MoviesBySearchList movies={movies}/>
             <PaginationComponent
-                totalPages={totalPages}
+                totalPages={total_pages}
                 currentPage={currentPage}/>
         </div>
     );
