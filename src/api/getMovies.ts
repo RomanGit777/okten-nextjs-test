@@ -31,9 +31,9 @@ export const getMoviesByGenre = async (genreId: string, page : string ): Promise
     return data;
 }
 
-export const getMoviesBySearch = async (query: string): Promise<IPopularBaseMovies> => {
+export const getMoviesBySearch = async (query: string, page : string): Promise<IPopularBaseMovies> => {
     const { data } = await axios.get(
-        `https://api.themoviedb.org/3/search/multi?api_key=${process.env.API_KEY}&query=${encodeURIComponent(query)}`
+        `https://api.themoviedb.org/3/search/multi?api_key=${process.env.API_KEY}&page=${page}&query=${encodeURIComponent(query)}`
     );
 
     const filtered = data.results.filter(

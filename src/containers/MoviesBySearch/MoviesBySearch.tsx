@@ -1,16 +1,23 @@
 import {getMoviesBySearch} from "@/api/getMovies";
 import {MoviesBySearchList} from "@/components/moviesList/MoviesBySearchList/MoviesBySearchList";
+import {PaginationComponent} from "@/components/pagination/PaginationComponent";
 
 interface MoviesBySearchProps {
-    query: string
+    query: string;
+    page: string;
 }
-export const MoviesBySearch = async ({query} : MoviesBySearchProps) => {
-    console.log(query);
-    const {results: movies} = await getMoviesBySearch(query);
-    console.log(movies);
+export const MoviesBySearch = async ({query, page} : MoviesBySearchProps) => {
+    const currentPage = Number(page || 1);
+
+    const totalPages = 5;
+
+    const {results: movies} = await getMoviesBySearch(query, String(page));
     return (
         <div style={{paddingBottom: "20px", paddingTop: "60px"}}>
             <MoviesBySearchList movies={movies}/>
+            <PaginationComponent
+                totalPages={totalPages}
+                currentPage={currentPage}/>
         </div>
     );
 };
