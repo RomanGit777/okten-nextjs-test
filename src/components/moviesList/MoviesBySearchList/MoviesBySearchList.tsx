@@ -9,7 +9,7 @@ interface MoviesBySearchListProps {
 export const MoviesBySearchList = ({movies} : MoviesBySearchListProps) => {
 
     return (
-        <div className={style.grid}>
+        <div className={style.gridContainer}>
             {movies.map(m => <MoviesBySearchListCard movie={m} key={m.id}/>)}
         </div>
     );

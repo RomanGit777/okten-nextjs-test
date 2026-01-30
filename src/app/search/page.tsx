@@ -1,9 +1,10 @@
 import {MoviesBySearch} from "@/containers/MoviesBySearch/MoviesBySearch";
 interface MoviesPageBySearchPage {
-    params: Promise<{query: string}>;
+    searchParams: Promise<{query: string}>;
 }
-const MoviesBySearchPage = async ({params} : MoviesPageBySearchPage) => {
-    const {query} = await params;
+const MoviesBySearchPage = async ({searchParams} : MoviesPageBySearchPage) => {
+    const {query} = await searchParams;
+    // console.log(query);
     return <MoviesBySearch query={query}/>;
 };
 export default MoviesBySearchPage;

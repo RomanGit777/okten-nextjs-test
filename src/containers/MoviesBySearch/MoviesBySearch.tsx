@@ -5,7 +5,12 @@ interface MoviesBySearchProps {
     query: string
 }
 export const MoviesBySearch = async ({query} : MoviesBySearchProps) => {
+    console.log(query);
     const {results: movies} = await getMoviesBySearch(query);
     console.log(movies);
-    return <MoviesBySearchList movies={movies}/>;
+    return (
+        <div style={{paddingBottom: "20px", paddingTop: "60px"}}>
+            <MoviesBySearchList movies={movies}/>
+        </div>
+    );
 };
