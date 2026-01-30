@@ -26,6 +26,11 @@ export const getPopularMoviesById = async (id: string): Promise<IMovieDetails> =
     return data;
 }
 export const getMoviesByGenre = async (genreId: string, page : string ): Promise<IPopularBaseMovies> => {
-    const {data} = await axios.get(`https://api.themoviedb.org/3/discover/movie?with_genres=${genreId}&page=${page}&&api_key=${process.env.API_KEY}`)
+    const {data} = await axios.get(`https://api.themoviedb.org/3/discover/movie?with_genres=${genreId}&page=${page}&api_key=${process.env.API_KEY}`)
+    return data;
+}
+
+export const getMoviesBySearch = async (query: string): Promise<IPopularBaseMovies> => {
+    const {data} = await axios.get(`https://api.themoviedb.org/3/search/multi?${query}&api_key=${process.env.API_KEY}`)
     return data;
 }
