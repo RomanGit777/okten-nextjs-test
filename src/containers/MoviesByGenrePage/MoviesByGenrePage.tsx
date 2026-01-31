@@ -23,7 +23,9 @@ export const MoviesByGenrePage = async ({id, page} : MoviesByGenrePageProps) => 
             {tv.length > 0 && <TvByGenreList tv={tv}/>}
             <PaginationComponent
                 totalPages={totalPages}
-                currentPage={currentPage}/>
+                currentPage={currentPage}
+                maxVisible={5}
+            />
         </div>
     );
 };

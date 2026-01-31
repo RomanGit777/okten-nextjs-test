@@ -1,14 +1,25 @@
-export const getPageWindow = (currentPage: number, totalPages: number, maxVisible = 5) => {
-    let start = Math.max(1, currentPage - 2)
-    const end = Math.min(totalPages, start + maxVisible - 1);
+export function getPageWindow(currentPage: number, totalPages: number, maxVisible: number) {
 
-    if (end - start < maxVisible - 1) {
-        start = Math.max(1, end - maxVisible + 1);
+    const half = Math.floor(maxVisible / 2);
+
+    let start = currentPage - half;
+
+    let end = currentPage + half;
+
+    if (start < 1) {
+        start = 1;
+        end = Math.min(maxVisible, totalPages);
     }
 
-    const pages: number[] = [];
+    if (end > totalPages) {
+        end = totalPages;
+        start = Math.max(1, totalPages - maxVisible + 1);
+    }
+
+    const pages = [];
     for (let i = start; i <= end; i++) {
         pages.push(i);
     }
+
     return {start, end, pages};
 }
