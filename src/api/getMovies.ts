@@ -3,7 +3,6 @@ import {ITvDetails} from "@/models/ITvDetails";
 import {IPopularBaseTv} from "@/models/IPopularBaseTv";
 import {IPopularBaseMovies} from "@/models/IPopularBaseMovies";
 import {IMovieDetails} from "@/models/IMovieDetails";
-import {IPopularMovies} from "@/models/IPopularMovies";
 
 export const getPopularTv = async (time_window : "day" | "week"): Promise<IPopularBaseTv> => {
     const {data} = await axios.get(`https://api.themoviedb.org/3/trending/tv/${time_window}?api_key=${process.env.API_KEY}`)
@@ -33,18 +32,7 @@ export const getMoviesByGenre = async (genreId: string, page : string ): Promise
 
 export const getMoviesBySearch = async (query: string, page : string): Promise<IPopularBaseMovies> => {
     const { data } = await axios.get(
-        `https://api.themoviedb.org/3/search/multi?api_key=${process.env.API_KEY}&page=${page}&query=${encodeURIComponent(query)}`
-    );
-
-    const filtered = data.results.filter(
-        (item: any) => item.media_type === "movie" || item.media_type === "tv"
-    );
-
-    return {
-        page: data.page,
-        total_pages: data.total_pages,
-        total_results: data.total_results,
-        results: filtered
-    };
+        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.API_KEY}&page=${page}&query=${encodeURIComponent(query)}` );
+        return data;
 };
 

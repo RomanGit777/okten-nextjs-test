@@ -6,6 +6,6 @@ interface MoviesBySearchListCardProps {
 }
 export const MoviesBySearchListCard = ({movie} : MoviesBySearchListCardProps) => {
     const shortOverview = movie.overview ? movie.overview.slice(0,50) + "..." : "";
-    console.log(movie);
+    // console.log(movie);
     return <MediaCardByGenre type={"movie"} shortOverview={shortOverview} item={movie}/>;
 };

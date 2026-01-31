@@ -23,6 +23,7 @@ export const PaginationComponent = ({currentPage,totalPages, maxVisible = 5} : P
     const goToPage = (page: number) => {
         if (page < 1 || page > totalPages) return;
         const params = new URLSearchParams(searchParams.toString());
+        params.set("query", searchParams.get("query") || "");
         params.set("page", String(page));
         router.push(`?${params.toString()}`);
     }

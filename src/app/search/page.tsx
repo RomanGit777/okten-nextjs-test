@@ -4,7 +4,12 @@ interface MoviesPageBySearchPage {
 }
 const MoviesBySearchPage = async ({searchParams} : MoviesPageBySearchPage) => {
     const {query, page} = await searchParams;
-    // console.log(query);
-    return <MoviesBySearch query={query} page={page || "1"} />;
+
+    const safeQuery = query ?? "";
+    const safePage = page && page !== "" ? page : "1";
+
+    // console.log(safeQuery);
+    // console.log(safePage);
+    return <MoviesBySearch query={safeQuery} page={safePage} />;
 };
 export default MoviesBySearchPage;
