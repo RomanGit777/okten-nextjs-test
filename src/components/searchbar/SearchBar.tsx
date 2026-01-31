@@ -2,11 +2,13 @@
 import style from './style.module.css'
 import React, {useEffect, useRef, useState} from "react";
 import {useRouter} from "next/navigation";
+import {useDebounce} from "@/hooks/useDebounce";
 
 export const SearchBar = () => {
     const [isShown, setIsShown] = useState(false);
     const router = useRouter();
     const [text, setText] = useState("");
+    const debouncedText = useDebounce(text, 300);
     const wrapperRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
