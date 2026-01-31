@@ -26,11 +26,10 @@ export const MediaCard = ({item, shortOverview, type} : MediaCardProps) => {
                     <h2 className={style.title}>{title}</h2>
                     <p className={style.desc}>{shortOverview}</p>
                     <div className={style.downPart}>
-                        <p className={style.rating}
-                           style={{backgroundColor: item.vote_average >= 7 ? "green" : "red"}}>
-                            {item.vote_average.toFixed(1)}
-                        </p>
-                        <p className={style.genres}>{item.genre_ids.map(id => GENRE_MAP[id]).join(", ")}</p>
+                        <p className={style.rating} style={{backgroundColor: item.vote_average >= 7 ? "green" : "red"}}>
+                            {item.vote_average? item.vote_average.toFixed(1) : "N/A"}</p>
+                        <p className={style.genre}>{item.genre_ids ?
+                            item.genre_ids.map(id => GENRE_MAP[id]).join(", ") : "Unknown"}</p>
                     </div>
                 </div>
             </div>
