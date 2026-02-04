@@ -3,13 +3,31 @@ import style from './style.module.css'
 import React, {useEffect, useRef, useState} from "react";
 import {useRouter} from "next/navigation";
 import {useDebounce} from "@/hooks/useDebounce";
+import {IPopularMovies} from "@/models/IPopularMovies";
+import {fetchSearchSuggestions} from "@/api/fetchSearchSuggestions";
 
 export const SearchBar = () => {
     const [isShown, setIsShown] = useState(false);
     const router = useRouter();
     const [text, setText] = useState("");
     const debouncedText = useDebounce(text, 300);
+    const [suggestions, setSuggestions] = useState<IPopularMovies[]>([]);
     const wrapperRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        let cancelled = false;
+
+        if (!debouncedText.trim()) {
+            Promise.resolve().then(() => {
+                if (!cancelled) setSuggestions([])
+            });
+            return () => { cancelled = true; };
+        }
+        fetchSearchSuggestions(debouncedText, 5).then(data => {
+            if (!cancelled) setSuggestions(data);
+        })
+        return () => { cancelled = true; };
+    }, [debouncedText]);
 
     useEffect(() => {
         function handleClickOutside(e : MouseEvent) {
@@ -31,7 +49,7 @@ export const SearchBar = () => {
         setIsShown(false);
         router.push(`/search?query=${encodeURIComponent(text)}`)
     }
-    
+
     return (
         <div className={style.wrapper} ref={wrapperRef}>
             <form onSubmit={handleSubmit}>
@@ -46,7 +64,7 @@ export const SearchBar = () => {
                     />
                 </svg>
                 </button>
-                {isShown &&
+                {isShown && (
                     <div className={style.inputWrapper}>
                         <input type="text"
                         className={style.input}
@@ -60,8 +78,23 @@ export const SearchBar = () => {
                             <path d="M14.5444 30.4557L30.4557 14.5444M30.4557 30.4557L14.5444 14.5444" stroke="#969696" strokeWidth="1.25" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>
                         </button>
+                        {isShown && suggestions.length > 0 && (
+                            <ul className={style.searchDropdown}>
+                                {suggestions.map(movie => (
+                                    <li key={movie.id}
+                                        className={style.searchItem}
+                                        role="button"
+                                        onClick={() => router.push(`/movie/${movie.id}`)}>
+                                        <p className={style.title}>{movie.title}</p>
+                                        <p>{movie.release_date}</p>
+                                        <p className={style.rating}
+                                           style={{ backgroundColor: movie.vote_average >= 7 ? "green" : "red" }} >
+                                            {movie.vote_average ? movie.vote_average.toFixed(1) : "N/A"} </p>
+                                    </li> ))}
+                            </ul> )}
+
                     </div>
-                }
+                )}
             </form>
         </div>
 );};

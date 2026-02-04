@@ -3,6 +3,7 @@ import {ITvDetails} from "@/models/ITvDetails";
 import {IPopularBaseTv} from "@/models/IPopularBaseTv";
 import {IPopularBaseMovies} from "@/models/IPopularBaseMovies";
 import {IMovieDetails} from "@/models/IMovieDetails";
+import {IPopularMovies} from "@/models/IPopularMovies";
 
 export const getPopularTv = async (time_window : "day" | "week"): Promise<IPopularBaseTv> => {
     const {data} = await axios.get(`https://api.themoviedb.org/3/trending/tv/${time_window}?api_key=${process.env.API_KEY}`)
@@ -30,9 +31,10 @@ export const getMoviesByGenre = async (genreId: string, page : string ): Promise
     return data;
 }
 
-export const getMoviesBySearch = async (query: string, page : string): Promise<IPopularBaseMovies> => {
-    const { data } = await axios.get(
+export const getMoviesBySearch = async (query: string, page : number = 1): Promise<IPopularMovies[]> => {
+    const { data } = await axios.get<IPopularBaseMovies>
+    (
         `https://api.themoviedb.org/3/search/movie?api_key=${process.env.API_KEY}&page=${page}&query=${encodeURIComponent(query)}` );
-        return data;
+        return data.results;
 };
 
