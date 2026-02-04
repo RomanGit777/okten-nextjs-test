@@ -4,7 +4,6 @@ import React, {useEffect, useRef, useState} from "react";
 import {useRouter} from "next/navigation";
 import {useDebounce} from "@/hooks/useDebounce";
 import {IPopularMovies} from "@/models/IPopularMovies";
-import {fetchSearchSuggestions} from "@/api/fetchSearchSuggestions";
 
 export const SearchBar = () => {
     const [isShown, setIsShown] = useState(false);
@@ -23,9 +22,18 @@ export const SearchBar = () => {
             });
             return () => { cancelled = true; };
         }
-        fetchSearchSuggestions(debouncedText, 5).then(data => {
-            if (!cancelled) setSuggestions(data);
-        })
+
+        const url = `/api/search?query=${encodeURIComponent(debouncedText)}&limit=5`
+
+        fetch(url)
+        .then(res => res.json())
+            .then((data: IPopularMovies[]) => {
+                    if (!cancelled) setSuggestions(data);
+                })
+            .catch(() => {
+                if (!cancelled) setSuggestions([]);
+            });
+
         return () => { cancelled = true; };
     }, [debouncedText]);
 

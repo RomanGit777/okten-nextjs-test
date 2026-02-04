@@ -9,7 +9,7 @@ interface MoviesBySearchProps {
 export const MoviesBySearch = async ({query, page} : MoviesBySearchProps) => {
     const currentPage = Number(page || 1);
 
-    const {results: movies, total_pages} = await getMoviesBySearch(query, String(currentPage));
+    const {results: movies, total_pages} = await getMoviesBySearch(query, currentPage);
     return (
         <div style={{paddingBottom: "20px", paddingTop: "60px"}}>
             <MoviesBySearchList movies={movies}/>
