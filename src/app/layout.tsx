@@ -3,7 +3,7 @@ import "./globals.css";
 import "../styles/reset.css"
 import {Montserrat} from 'next/font/google'
 import {Header} from "@/components/header/Header";
-import {GenresSection} from "@/components/genresSection/GenresSection";
+import {Providers} from "@/app/providers";
 
 const montserrat = Montserrat({
     subsets: ['latin']
@@ -21,8 +21,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-      <Header/>
-        {children}
+          <Providers>
+          <Header/>
+            {children}
+          </Providers>
       </body>
     </html>
   );

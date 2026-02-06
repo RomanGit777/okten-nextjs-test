@@ -2,41 +2,26 @@
 import style from './style.module.css'
 import React, {useEffect, useRef, useState} from "react";
 import {useRouter} from "next/navigation";
-import {useDebounce} from "@/hooks/useDebounce";
 import {IPopularMovies} from "@/models/IPopularMovies";
 import {Rating} from "@/components/rating/Rating";
+import {useQuery} from "@tanstack/react-query";
+import debounce from "lodash.debounce";
 
 export const SearchBar = () => {
     const [isShown, setIsShown] = useState(false);
     const router = useRouter();
-    const [text, setText] = useState("");
-    const debouncedText = useDebounce(text, 300);
-    const [suggestions, setSuggestions] = useState<IPopularMovies[]>([]);
     const wrapperRef = useRef<HTMLDivElement>(null);
+    const [query, setQuery] = useState('');
 
-    useEffect(() => {
-        let cancelled = false;
-
-        if (!debouncedText.trim()) {
-            Promise.resolve().then(() => {
-                if (!cancelled) setSuggestions([])
-            });
-            return () => { cancelled = true; };
-        }
-
-        const url = `/api/search?query=${encodeURIComponent(debouncedText)}&limit=5`
-
-        fetch(url)
-        .then(res => res.json())
-            .then((data: IPopularMovies[]) => {
-                    if (!cancelled) setSuggestions(data);
-                })
-            .catch(() => {
-                if (!cancelled) setSuggestions([]);
-            });
-
-        return () => { cancelled = true; };
-    }, [debouncedText]);
+    const { data, isLoading } = useQuery<IPopularMovies[]>({
+        queryKey: ['search', query],
+        queryFn: async () => {
+            const res = await fetch(`/api/search?query=${query}`);
+            return res.json();
+        },
+        enabled: query.length > 0,
+        staleTime: 1000 * 60 * 5
+    });
 
     useEffect(() => {
         function handleClickOutside(e : MouseEvent) {
@@ -49,6 +34,7 @@ export const SearchBar = () => {
 
     const openBtnHandler = () => {
         setIsShown(true);
+        setQuery("");
     }
    const closeBtnHandler = () => {
         setIsShown(false);
@@ -56,9 +42,13 @@ export const SearchBar = () => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setIsShown(false);
-        setText("");
-        router.push(`/search?query=${encodeURIComponent(text)}`)
+        setQuery("");
+        router.push(`/search?query=${encodeURIComponent(query)}`)
     }
+
+    const handleChange = debounce((value: string) => {
+        setQuery(value);
+    }, 300)
 
     return (
         <div className={style.wrapper} ref={wrapperRef}>
@@ -80,17 +70,20 @@ export const SearchBar = () => {
                         className={style.input}
                         placeholder={'Enter the film'}
                         onChange={(e) => {
-                            setText(e.target.value)
+                            handleChange(e.target.value)
                         }}
                         />
+
+                        {isLoading && <p>Loading...</p>}
+
                         <button className={style.closeBtn} onClick={closeBtnHandler} type={"button"}>
                             <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M14.5444 30.4557L30.4557 14.5444M30.4557 30.4557L14.5444 14.5444" stroke="#969696" strokeWidth="1.25" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>
                         </button>
-                        {isShown && suggestions.length > 0 && (
+                        {isShown && (data?.length ?? 0) > 0 && (
                             <ul className={style.searchDropdown}>
-                                {suggestions.map(movie => (
+                                {data?.map(movie => (
                                     <li key={movie.id}
                                         className={style.searchItem}
                                         role="button"
