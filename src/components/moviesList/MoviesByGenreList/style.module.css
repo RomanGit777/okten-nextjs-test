@@ -7,3 +7,10 @@
     margin: 30px auto;
     max-width: 1160px;
 }
+.failPage{
+    display: block;
+    text-align: center;
+    color: white;
+    font-size: 22px;
+    margin-top: 155px;
+}
