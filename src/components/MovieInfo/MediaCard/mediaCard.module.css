@@ -93,17 +93,6 @@
     align-items: center;
     margin-top: 10px;
 }
-.rating{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 25px;
-    border-radius: 5px;
-}
-.genres{
-    font-size: 12px;
-}
 
 
 @media screen and (max-width: 1100px) {
