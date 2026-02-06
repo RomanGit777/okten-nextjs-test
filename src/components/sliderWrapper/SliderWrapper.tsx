@@ -1,11 +1,11 @@
 'use client';
-import {useEffect, useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import style from './sliderWrapper.module.css';
 
 interface SliderWrapperProps {
     children: React.ReactNode;
     Arrows: React.ComponentType<{
-        scroll: (direction: "right" | "left") => void;
+        scrollAction: (direction: "right" | "left") => void;
         canGoBack: boolean;
         canGoForward: boolean;
     }>;
@@ -59,7 +59,7 @@ export const SliderWrapper = ({Arrows, children}: SliderWrapperProps) => {
         onMouseEnter={() => setShow(true)}
         onMouseLeave={() => setShow(false)}>
             {show && ( <Arrows
-                scroll={scrollByStep}
+                scrollAction={scrollByStep}
                 canGoBack={canGoBack}
                 canGoForward={canGoForward}
             /> )}
