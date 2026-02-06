@@ -4,6 +4,7 @@ import React, {useEffect, useRef, useState} from "react";
 import {useRouter} from "next/navigation";
 import {useDebounce} from "@/hooks/useDebounce";
 import {IPopularMovies} from "@/models/IPopularMovies";
+import {Rating} from "@/components/rating/Rating";
 
 export const SearchBar = () => {
     const [isShown, setIsShown] = useState(false);
@@ -96,9 +97,7 @@ export const SearchBar = () => {
                                         onClick={() => router.push(`/movie/${movie.id}`)}>
                                         <p className={style.title}>{movie.title}</p>
                                         <p>{movie.release_date}</p>
-                                        <p className={style.rating}
-                                           style={{ backgroundColor: movie.vote_average >= 7 ? "green" : "red" }} >
-                                            {movie.vote_average ? movie.vote_average.toFixed(1) : "N/A"} </p>
+                                        <Rating value={movie.vote_average}/>
                                     </li> ))}
                             </ul> )}
 

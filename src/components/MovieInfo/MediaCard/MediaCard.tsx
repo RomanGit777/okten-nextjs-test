@@ -2,7 +2,6 @@ import {IPopularMovies} from "@/models/IPopularMovies";
 import {IPopularTv} from "@/models/IPopularTv";
 import style from './mediaCard.module.css';
 import {PosterPreview} from "@/components/posterPreview/PosterPreview";
-import {GENRE_MAP} from "@/constants/genres";
 import Link from "next/link";
 import {Rating} from "@/components/rating/Rating";
 import {Genre} from "@/components/genre/Genre";

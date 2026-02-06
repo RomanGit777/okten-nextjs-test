@@ -26,15 +26,17 @@
     display: flex;
     align-items: center;
     gap: 20px;
-    font-size: 18px;
 }
-.rating{
+.detailsRating{
     display: flex;
     align-items: center;
     justify-content: center;
     width: 30px;
     height: 30px;
     border-radius: 5px;
+}
+.detailsGenre{
+    font-size: 18px !important;
 }
 
 @media screen and (max-width: 1000px) {
