@@ -55,6 +55,7 @@ export const SearchBar = () => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setIsShown(false);
+        setText("");
         router.push(`/search?query=${encodeURIComponent(text)}`)
     }
 

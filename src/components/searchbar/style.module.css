@@ -38,3 +38,28 @@
     display: flex;
     align-items: center;
 }
+.searchDropdown{
+    position: absolute;
+    width: 100%;
+    top: 40px;
+    right: 2px;
+}
+.searchItem{
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+    background-color: #101010;
+    padding: 8px 10px;
+    border-bottom: 1px solid #333;
+}
+.searchItem:hover {
+    background: #444;
+}
+.rating{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    width: 30px;
+    height: 22px;
+}
