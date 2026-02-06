@@ -9,3 +9,8 @@
 .userInfo img{
     cursor: pointer;
 }
+@media screen and (max-width: 330px) {
+    .userInfo p{
+        font-size: 12px;
+    }
+}
