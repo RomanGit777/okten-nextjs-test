@@ -9,7 +9,7 @@ interface TvMoviesListTvProps{
 export const TvMoviesList = ({tv}: TvMoviesListTvProps) => {
     return (
         <div className={style.moviesListContainer}>
-            <div className={'tvShows'}>
+            <div className={style.tvShows}>
                 <h1 className={style.title}>Popular Tv Shows</h1>
                 <SliderWrapper Arrows={SliderArrows}>
                         {tv.map(tv => <MoviesListCardTv tv={tv} key={tv.id}/>)}
