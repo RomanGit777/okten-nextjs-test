@@ -1,6 +1,6 @@
 import {getPopularMovies, getPopularTv} from "@/api/getMovies";
-import {TvMoviesList} from "@/components/moviesList/MoviesListTv/TvMoviesList";
 import {MoviesList} from "@/components/moviesList/MoviesList/MoviesList";
+import {TvList} from "@/components/moviesList/TvList/TvList";
 
 export const MoviesPage = async () => {
     const [{results: tv}, {results: movies}] = await Promise.all([
@@ -9,7 +9,7 @@ export const MoviesPage = async () => {
     ]);
     return (
         <section>
-            <TvMoviesList tv={tv}/>
+            <TvList tv={tv}/>
             <MoviesList movies={movies}/>
         </section>
     );

@@ -5,24 +5,23 @@ import {PosterPreview} from "@/components/posterPreview/PosterPreview";
 import Link from "next/link";
 import {Rating} from "@/components/rating/Rating";
 import {Genre} from "@/components/genre/Genre";
+import {shortenText} from "@/utils/shortenText";
 
 type Media = IPopularTv | IPopularMovies;
 
 interface MediaCardProps {
     item: Media;
-    shortOverview: string;
-    type: "tv" | "movie";
+    mediaType: "tv" | "movie";
 }
 
-export const MediaCard = ({item, shortOverview, type} : MediaCardProps) => {
+export const MediaCard = ({item, mediaType} : MediaCardProps) => {
 
+    const shortOverview = shortenText(item.overview)
     const title = "name" in item ? item.name : item.title;
 
     return (
-        <Link href={`/${type}/` + item.id.toString()}>
-            <div className={style.card} role={"button"}>
+        <Link href={`/${mediaType}/${item.id}`} className={style.card}>
                 <PosterPreview title={title} posterPath={item.poster_path} className={style.cardImg}/>
-
                 <div className={style.text}>
                     <h2 className={style.title}>{title}</h2>
                     <p className={style.desc}>{shortOverview}</p>
@@ -31,7 +30,6 @@ export const MediaCard = ({item, shortOverview, type} : MediaCardProps) => {
                         <Genre ids={item.genre_ids}/>
                     </div>
                 </div>
-            </div>
         </Link>
     );
 };
