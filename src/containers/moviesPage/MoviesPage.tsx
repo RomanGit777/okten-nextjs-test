@@ -8,9 +8,9 @@ export const MoviesPage = async () => {
         getPopularMovies("day"),
     ]);
     return (
-        <>
+        <section>
             <TvMoviesList tv={tv}/>
             <MoviesList movies={movies}/>
-        </>
+        </section>
     );
 };
