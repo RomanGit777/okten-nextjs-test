@@ -1,8 +1,8 @@
 import style from './style.module.css'
 import {getMoviesById, getTvById} from "@/api/getMovies";
-import {PosterPreview} from "@/components/posterPreview/PosterPreview";
-import {Rating} from "@/components/rating/Rating";
-import {Genre} from "@/components/genre/Genre";
+import {Rating} from "@/components/Rating/Rating";
+import {PosterPreview} from "@/components/PosterPreview/PosterPreview";
+import {Genre} from "@/components/Genre/Genre";
 
 type MovieDetailsProps = {
     id: string;

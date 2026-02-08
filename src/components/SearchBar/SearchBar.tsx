@@ -2,7 +2,7 @@
 import style from './style.module.css'
 import React, {useEffect, useMemo, useRef, useState} from "react";
 import {useRouter} from "next/navigation";
-import {Rating} from "@/components/rating/Rating";
+import {Rating} from "@/components/Rating/Rating";
 import debounce from "lodash.debounce";
 import {useSearchMovies} from "@/hooks/useSearchMovies";
 

@@ -1,8 +1,8 @@
 import style from './moviesList.module.css'
 import {IPopularMovies} from "@/models/IPopularMovies";
 import {MoviesListCard} from "@/components/moviesListCard/MoviesListCard/MoviesListCard";
-import {SliderWrapper} from "@/components/sliderWrapper/SliderWrapper";
-import {SliderArrows} from "@/components/sliderArrows/SliderArrows";
+import {SliderWrapper} from "@/components/SliderWrapper/SliderWrapper";
+import {SliderArrows} from "@/components/SliderArrows/SliderArrows";
 
 interface MoviesListProps {
     movies: IPopularMovies[];

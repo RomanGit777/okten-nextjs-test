@@ -1,8 +1,8 @@
 import style from '../MoviesList/moviesList.module.css'
 import {IPopularTv} from "@/models/IPopularTv";
-import {SliderArrows} from "@/components/sliderArrows/SliderArrows";
-import {SliderWrapper} from "@/components/sliderWrapper/SliderWrapper";
 import {TvListCard} from "@/components/moviesListCard/TvListCard/TvListCard";
+import {SliderWrapper} from "@/components/SliderWrapper/SliderWrapper";
+import {SliderArrows} from "@/components/SliderArrows/SliderArrows";
 interface TvListProps{
     tv: IPopularTv[];
 }

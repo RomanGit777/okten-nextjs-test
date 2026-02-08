@@ -1,11 +1,11 @@
 import {IPopularMovies} from "@/models/IPopularMovies";
 import {IPopularTv} from "@/models/IPopularTv";
 import style from './mediaCard.module.css';
-import {PosterPreview} from "@/components/posterPreview/PosterPreview";
 import Link from "next/link";
-import {Rating} from "@/components/rating/Rating";
-import {Genre} from "@/components/genre/Genre";
+import {Rating} from "@/components/Rating/Rating";
 import {shortenText} from "@/utils/shortenText";
+import {PosterPreview} from "@/components/PosterPreview/PosterPreview";
+import {Genre} from "@/components/Genre/Genre";
 
 type Media = IPopularTv | IPopularMovies;
 

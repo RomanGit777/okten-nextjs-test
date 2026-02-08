@@ -1,7 +1,7 @@
 import style from "./style.module.css"
 import {getPageWindow} from "@/helpers/getPageWindow";
 import React from "react";
-import {PageButton} from "@/components/pagination/PageButton";
+import {PageButton} from "@/components/Pagination/PageButton";
 interface PaginationComponentProps {
     currentPage: number;
     totalPages: number;

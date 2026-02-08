@@ -1,4 +1,4 @@
-import {GenresSection} from "@/components/genresSection/GenresSection";
+import {GenresSection} from "@/components/GenresSection/GenresSection";
 
 const genresPage = () => {
     return <GenresSection/>;

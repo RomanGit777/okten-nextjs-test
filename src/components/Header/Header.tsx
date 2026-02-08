@@ -1,7 +1,7 @@
 import styles from './header.module.css'
-import {UserInfo} from "@/components/userInfo/UserInfo";
-import {SearchBar} from "@/components/searchbar/SearchBar";
 import Link from "next/link";
+import {SearchBar} from "@/components/SearchBar/SearchBar";
+import {UserInfo} from "@/components/UserInfo/UserInfo";
 export const Header = () => {
     return (
         <header className={styles.header}>
