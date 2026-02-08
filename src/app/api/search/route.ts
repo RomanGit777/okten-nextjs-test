@@ -7,7 +7,7 @@ export async function GET(req: Request) {
     const limitParam = searchParams.get('limit');
     const limit = limitParam ? Number(limitParam) : 5;
 
-    if (!query.trim()) {
+    if (!query || !query.trim()) {
         return NextResponse.json([]);
     }
 
