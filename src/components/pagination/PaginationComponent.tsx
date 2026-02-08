@@ -7,11 +7,9 @@ interface PaginationComponentProps {
     totalPages: number;
     maxVisible: number;
 }
-export const PaginationComponent = <T,>({currentPage, maxVisible = 5, totalPages} : PaginationComponentProps) => {
+export const PaginationComponent = ({currentPage, maxVisible = 5, totalPages} : PaginationComponentProps) => {
 
-    const {start, end, pages} = React.useMemo(
-        () => getPageWindow(currentPage, totalPages, maxVisible),
-        [currentPage, totalPages, maxVisible]);
+    const {start, end, pages} = getPageWindow(currentPage, totalPages, maxVisible);
 
     if (!totalPages || totalPages <= 1) return null;
 

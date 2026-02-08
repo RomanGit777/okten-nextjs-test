@@ -8,7 +8,7 @@ interface TvByGenreListProps {
 export const TvByGenreList = ({tv} : TvByGenreListProps) => {
     return (
         <div  className={style.gridContainer}>
-            {tv.map(tv => <TvByGenreListCard key={tv.id} tv={tv}/>)}
+            {tv.map(item => <TvByGenreListCard key={item.id} tv={item}/>)}
         </div>
     );
 };
