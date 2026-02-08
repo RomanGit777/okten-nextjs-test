@@ -8,8 +8,6 @@ const MoviesBySearchPage = async ({searchParams} : MoviesPageBySearchPage) => {
     const safeQuery = query ?? "";
     const safePage = page && page !== "" ? page : "1";
 
-    // console.log(safeQuery);
-    // console.log(safePage);
     return <MoviesBySearch query={safeQuery} page={safePage} />;
 };
 export default MoviesBySearchPage;

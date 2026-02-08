@@ -13,8 +13,8 @@ export const PosterPreview = ({posterPath, title, className}: PosterPreviewProps
         src={posterUrl}
         alt={title}
         className={className ?? ""}
-        width={300}
-        height={450}
+        width={250}
+        height={350}
         unoptimized
     />;
 };

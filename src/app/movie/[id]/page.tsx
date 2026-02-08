@@ -1,4 +1,4 @@
-import {MediaDetails} from "@/components/mediaDetails/mediaDetails";
+import {MediaDetails} from "@/components/MovieInfo/mediaDetails/mediaDetails";
 
 type MovieDetailsProps = {
     params: Promise<{ id: string }>;
