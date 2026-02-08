@@ -19,15 +19,25 @@ export const getPopularTvById = async (id: string): Promise<ITvDetails> => {
     return data
 }
 export const getTvByGenre = async (genreId: string, page : string): Promise<IPopularBaseTv> => {
-    const {data} = await axios.get(`https://api.themoviedb.org/3/discover/tv?with_genres=${genreId}&page=${page}&api_key=${process.env.API_KEY}`)
-    return data;
+    const safePage = Math.min(Number(page), 500);
+    const res = await
+        fetch(`https://api.themoviedb.org/3/discover/tv?with_genres=${genreId}&page=${safePage}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${process.env.TMDB_API_KEY}`
+                },
+                next: {revalidate: 3600},
+                cache: "force-cache"
+            }
+        );
+    if (!res.ok) throw new Error("Failed to fetch tv by genre");
+    return res.json();
 }
 
 export const getPopularMovies = async (time_window: "day" | "week"): Promise<IPopularBaseMovies> => {
     const res = await
         fetch(`https://api.themoviedb.org/3/trending/movie/${time_window}?api_key=${process.env.API_KEY}`,
-            {next: {revalidate: 3600},
-             cache: "force-cache"
+            {next: {revalidate: 3600}
             });
     if (!res.ok) throw new Error("Failed to fetch movies");
     return res.json();
@@ -37,8 +47,17 @@ export const getPopularMoviesById = async (id: string): Promise<IMovieDetails> =
     return data;
 }
 export const getMoviesByGenre = async (genreId: string, page : string ): Promise<IPopularBaseMovies> => {
-    const {data} = await axios.get(`https://api.themoviedb.org/3/discover/movie?with_genres=${genreId}&page=${page}&api_key=${process.env.API_KEY}`)
-    return data;
+    const safePage = Math.min(Number(page), 500);
+    const res = await
+        fetch(`https://api.themoviedb.org/3/discover/movie?with_genres=${genreId}&page=${safePage}`,
+            {
+                headers: {
+                    "Authorization": `Bearer ${process.env.TMDB_API_KEY}`
+                },
+                    next: {revalidate: 3600}
+            });
+        if (!res.ok) throw new Error("Failed to fetch movies by genre");
+     return res.json();
 }
 
 export const getMoviesBySearch = async (query: string, page : number = 1): Promise<IPopularBaseMovies> => {

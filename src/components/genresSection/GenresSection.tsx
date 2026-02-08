@@ -10,7 +10,10 @@ export const GenresSection = () => {
             <h1 className={style.title}>Genres</h1>
                     <ul className={style.genresContainer}>
                         {Object.entries(GENRE_MAP).map(([id, name]) =>
-                            <Link href={`/genres/${id}`} key={id}><li className={style.genresList}>{name}</li></Link> )}
+                                <li className={style.genresList} key={id}>
+                                    <Link href={`/genres/${id}`}>{name}</Link>
+                                </li>
+                           )}
                     </ul>
         </div>
     );
