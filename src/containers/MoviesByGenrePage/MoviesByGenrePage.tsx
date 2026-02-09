@@ -1,8 +1,9 @@
 import style from './style.module.css'
-import {getMoviesByGenre, getTvByGenre} from "@/api/getMovies";
+import {getTvByGenre} from "@/api/tv/getTv";
 import {MoviesByGenreList} from "@/components/moviesList/MoviesByGenreList/MoviesByGenreList";
 import {TvByGenreList} from "@/components/moviesList/TvByGenreList/TvByGenreList";
 import {PaginationComponent} from "@/components/Pagination/PaginationComponent";
+import {getMoviesByGenre} from "@/api/movies/getMovies";
 
 interface MoviesByGenrePageProps {
     id : string;

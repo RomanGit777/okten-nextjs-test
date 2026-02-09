@@ -1,7 +1,7 @@
 import style from './style.module.css'
-import {getMoviesBySearch} from "@/api/getMovies";
 import {MoviesBySearchList} from "@/components/moviesList/MoviesBySearchList/MoviesBySearchList";
 import {PaginationComponent} from "@/components/Pagination/PaginationComponent";
+import {getMoviesBySearch} from "@/api/movies/getMovies";
 
 interface MoviesBySearchProps {
     query: string;

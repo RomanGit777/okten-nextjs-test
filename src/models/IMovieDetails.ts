@@ -1,3 +1,5 @@
+import {IGenres} from "@/models/IGenres";
+
 export interface IMovieDetails {
     original_language: string;
     imdb_id: string;
@@ -5,7 +7,7 @@ export interface IMovieDetails {
     title: string;
     backdrop_path: string;
     revenue: number;
-    genres: Array<genresItem>;
+    genres: IGenres[];
     popularity: number;
     production_countries: Array<production_countriesItem>;
     id: number;
@@ -36,11 +38,6 @@ export interface production_companiesItem {
 	name: string;
 	id: number;
 	origin_country: string;
-}
-
-export interface genresItem {
-	name: string;
-	id: number;
 }
 
 export interface production_countriesItem {

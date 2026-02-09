@@ -1,8 +1,11 @@
 .moviesListContainer{
-    margin: 55px 25px 25px 25px;
+    margin: 25px;
     position: relative;
     overflow-x: hidden;
 
+}
+.moviesListContainer:first-of-type{
+    margin-top: 55px;
 }
 .title{
     margin-top: 35px;

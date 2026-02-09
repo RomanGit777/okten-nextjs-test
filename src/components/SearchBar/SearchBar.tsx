@@ -41,7 +41,7 @@ export const SearchBar = () => {
     }
 
     const debouncedSetQuery = useMemo(
-        () => debounce((value) => setQuery(value), 300),
+        () => debounce((value) => setQuery(value), 200),
         []
     );
 
@@ -86,7 +86,10 @@ export const SearchBar = () => {
                                     <li key={movie.id}
                                         className={style.searchItem}
                                         tabIndex={0}
-                                        onClick={() => router.push(`/movie/${movie.id}`)}>
+                                        onClick={() => {
+                                            setIsShown(false);
+                                            router.push(`/movie/${movie.id}`)
+                                        }}>
                                         <p className={style.title}>{movie.title}</p>
                                         <p>{movie.release_date}</p>
                                         <Rating value={movie.vote_average}/>

@@ -1,5 +1,5 @@
 import {NextResponse} from "next/server";
-import {getMoviesBySearch} from "@/api/getMovies";
+import {getMoviesBySearch} from "@/api/movies/getMovies";
 
 export async function GET(req: Request) {
     const {searchParams} = new URL(req.url);
