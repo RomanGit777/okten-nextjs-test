@@ -6,7 +6,7 @@ export const getPopularTv = async (time_window : "day" | "week"): Promise<IPopul
     const res = await
         fetch(`https://api.themoviedb.org/3/trending/tv/${time_window}`,
             {headers: {
-                Authorization: `Bearer ${process.env.TMDB_API_KEY}`
+                Authorization: `Bearer ${process.env.TMDB_TOKEN}`
                 },
                 next: {revalidate: 3600},
              cache: "force-cache"
@@ -18,7 +18,7 @@ export const getTvById = async (id: string): Promise<ITvDetails> => {
     const res = await
         fetch(`https://api.themoviedb.org/3/tv/${id}`,
             {headers: {
-                Authorization: `Bearer ${process.env.TMDB_API_KEY}`
+                Authorization: `Bearer ${process.env.TMDB_TOKEN}`
                 },
                 next: {revalidate: 3600}
             });
@@ -31,7 +31,7 @@ export const getTvByGenre = async (genreId: string, page : string): Promise<IPop
         fetch(`https://api.themoviedb.org/3/discover/tv?with_genres=${genreId}&page=${safePage}`,
             {
                 headers: {
-                    Authorization: `Bearer ${process.env.TMDB_API_KEY}`
+                    Authorization: `Bearer ${process.env.TMDB_TOKEN}`
                 },
                 next: {revalidate: 3600},
                 cache: "force-cache"

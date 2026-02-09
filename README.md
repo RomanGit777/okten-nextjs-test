@@ -82,3 +82,6 @@ Create .env.local:
 TMDB_API_KEY=your_tmdb_bearer_token
 
 This project uses data provided by The Movie Database (TMDB).
+
+(token for a mentor: TMDB_TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNGUzOThjMzdiNTE5ZjYyYzZhOTk1YzlhYzFjYTMwMSIsIm5iZiI6MTc2MzM5MTE2MS4wMzEwMDAxLCJzdWIiOiI2OTFiMzZiOTExN2MwZTQ3ZDIxNzVlNmEiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.m6cehBsc3dhuTWSTa02LI996v5AiVw2xv7c0vgrZRLY
+) 
