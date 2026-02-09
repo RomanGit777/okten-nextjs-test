@@ -100,10 +100,10 @@
         width: 150px;
         height: 250px;
     }
-}
-@media screen and (max-width: 500px) {
-    .card{
-        width: 100px;
-        height: 200px;
+    .title{
+        font-size: 12px;
+    }
+    .desc {
+        font-size: 10px;
     }
 }
