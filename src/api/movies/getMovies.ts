@@ -3,9 +3,9 @@ import {IMovieDetails} from "@/models/IMovieDetails";
 
 export const getPopularMovies = async (time_window: "day" | "week"): Promise<IPopularBaseMovies> => {
     const res = await
-        fetch(`https://api.themoviedb.org/3/trending/movie/${time_window}?api_key=${process.env.API_KEY}`,
+        fetch(`https://api.themoviedb.org/3/trending/movie/${time_window}`,
             {headers: {
-                    Authorization: `Bearer ${process.env.TMDB_API_KEY}`
+                    Authorization: `Bearer ${process.env.TMDB_TOKEN}`
                 },
                 next: {revalidate: 3600}
             });
@@ -16,7 +16,7 @@ export const getMoviesById = async (id: string): Promise<IMovieDetails> => {
     const res = await
         fetch(`https://api.themoviedb.org/3/movie/${id}`,
             {   headers: {
-                    Authorization: `Bearer ${process.env.TMDB_API_KEY}`
+                    Authorization: `Bearer ${process.env.TMDB_TOKEN}`
                 },
                 next: {revalidate: 3600}
             });
@@ -29,7 +29,7 @@ export const getMoviesByGenre = async (genreId: string, page : string ): Promise
         fetch(`https://api.themoviedb.org/3/discover/movie?with_genres=${genreId}&page=${safePage}`,
             {
                 headers: {
-                    Authorization: `Bearer ${process.env.TMDB_API_KEY}`
+                    Authorization: `Bearer ${process.env.TMDB_TOKEN}`
                 },
                 next: {revalidate: 3600}
             });
@@ -42,7 +42,7 @@ export const getMoviesBySearch = async (query: string, page : number = 1): Promi
     const res = await
         fetch(`https://api.themoviedb.org/3/search/movie?page=${safePage}&query=${encodeURIComponent(query)}`,
             {headers: {
-                    Authorization: `Bearer ${process.env.TMDB_API_KEY}`
+                    Authorization: `Bearer ${process.env.TMDB_TOKEN}`
                 },
                 next: {revalidate: 3600}
             });
